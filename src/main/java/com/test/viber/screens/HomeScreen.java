@@ -98,12 +98,8 @@ public class HomeScreen extends BaseClass {
 
     public void clickOnItems(String item){
         int flag=0;
-        System.out.println(" Item size is " + getListOfItems().size());
         for(int i=0;i<getListOfItems().size();i++){
-            System.out.println(" i = " + i +" "+ getListOfItems().get(i).getText());
-            System.out.println(" Item e "+ item);
             if(getListOfItems().get(i).getText().equals(item)){
-                System.out.println("Is clicked");
                 flag=1;
                 getListOfItems().get(i).click();
                 break;
@@ -111,7 +107,6 @@ public class HomeScreen extends BaseClass {
         }
         if (flag==0){
             System.out.println("Not fount " + item);
-            //break;
         }
     }
     public void clickOnAdSettings(){

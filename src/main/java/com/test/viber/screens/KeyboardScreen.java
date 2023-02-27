@@ -5,6 +5,8 @@ import io.appium.java_client.AppiumDriver;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
+import java.math.BigInteger;
+
 public class KeyboardScreen extends BaseClass {
     AppiumDriver appiumDriver;
     String oneId = "com.viber.voip:id/one";
@@ -118,6 +120,30 @@ public class KeyboardScreen extends BaseClass {
     }
     public String getNineWords(){
         return getNineWordsElement().getText();
+    }
+    public void typeNumber(String numbers){
+        while (numbers.length()!=0){
+            int pom = Integer.parseInt(String.valueOf(numbers.charAt(0)));
+            if (pom == 0){
+                appiumDriver.findElement(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.widget.LinearLayout/android.widget.RelativeLayout[2]/android.widget.LinearLayout[4]/android.widget.LinearLayout[2]")).click();
+            }
+            for (int i=1; i<4; i++){
+                if (pom == i){
+                    appiumDriver.findElement(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.widget.LinearLayout/android.widget.RelativeLayout[2]/android.widget.LinearLayout[1]/android.widget.LinearLayout[" + i + "]")).click();
+                }
+            }
+            for (int i=4; i<7; i++){
+                if(pom == i){
+                    appiumDriver.findElement(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.widget.LinearLayout/android.widget.RelativeLayout[2]/android.widget.LinearLayout[2]/android.widget.LinearLayout[" + (i - 3) + "]")).click();
+                }
+            }
+            for (int i=7; i<10; i++){
+                if(pom == i){
+                    appiumDriver.findElement(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.widget.LinearLayout/android.widget.RelativeLayout[2]/android.widget.LinearLayout[3]/android.widget.LinearLayout[" + (i - 6) + "]")).click();
+                }
+            }
+            numbers = numbers.substring(1);
+        }
     }
 
 

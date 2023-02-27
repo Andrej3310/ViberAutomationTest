@@ -2,6 +2,7 @@ package com.test.viber.screens;
 
 import com.test.viber.tests.BaseClass;
 import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.MobileBy;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
@@ -16,7 +17,10 @@ public class MyNotesScreen extends BaseClass {
     String stickerAssId = "Select a sticker to send";
     String removeButtonXpath = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.widget.RelativeLayout/android.view.ViewGroup/android.widget.RelativeLayout/android.widget.RelativeLayout/android.view.ViewGroup/androidx.recyclerview.widget.RecyclerView/android.view.ViewGroup/android.widget.FrameLayout/android.view.View";
     String deleteAllNotesXpath = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.widget.RelativeLayout/android.view.ViewGroup[2]/android.view.ViewGroup/androidx.recyclerview.widget.RecyclerView/android.widget.TextView";
-
+    String cancelButtonId = "android:id/button2";
+    String deleteButtonId = "android:id/button1";
+    String titleXpath = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.view.ViewGroup/android.widget.TextView";
+    String galleryId = "Choose media from gallery";
 
 
 
@@ -45,6 +49,18 @@ public class MyNotesScreen extends BaseClass {
     WebElement getDeleteNotesElement(){
         return appiumDriver.findElement(By.xpath(deleteAllNotesXpath));
     }
+    WebElement getCancelElement(){
+        return appiumDriver.findElement(By.id(cancelButtonId));
+    }
+    WebElement getDeleteElement(){
+        return appiumDriver.findElement(By.id(deleteButtonId));
+    }
+    WebElement getTitleElement(){
+        return appiumDriver.findElement(By.xpath(titleXpath));
+    }
+    WebElement getGalleryElement(){
+        return appiumDriver.findElementByAccessibilityId(galleryId);
+    }
 
     public void clickOnTypeMessange(){
         getTypeMessangeElement().click();
@@ -54,6 +70,7 @@ public class MyNotesScreen extends BaseClass {
     }
     public void typeMessange(String poraka){
         getTypeMessangeElement().sendKeys(poraka);
+        getSendMessangeElement().click();
     }
     public void clickOnBackButton(){
         getBackButtonElement().click();
@@ -69,6 +86,15 @@ public class MyNotesScreen extends BaseClass {
     }
     public void clickOnDeleteNotes(){
         getDeleteNotesElement().click();
+    }
+    public void clickOnDeleteButton(){
+        getDeleteElement().click();
+    }
+    public void checkPageName(String expectedName){
+        assert getTitleElement().getText().equals(expectedName);
+    }
+    public void clickOnGallery(){
+        getGalleryElement().click();
     }
 }
 

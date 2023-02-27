@@ -8,25 +8,35 @@ public class TestExample extends BaseClass{
     public void checkAppName(){
         homeScreen.checkTitleName("Viber");
     }
+
     @Test
     public void openCamera(){
         homeScreen.openCamera();
     }
+
+    @Test
+    public void addMessangeInNotes(){
+        homeScreen.clickOnItems("My Notes");
+        myNotesScreen.checkPageName("My Notes");
+        myNotesScreen.typeMessange("automation messange");
+        myNotesScreen.typeMessange("Inter");
+    }
+
     @Test
     public void clearAllNotes(){
         homeScreen.clickOnItems("My Notes");
+        myNotesScreen.checkPageName("My Notes");
         utils.clickOnThreePoints();
         utils.clickOnChatInfo();
         myNotesScreen.clickOnDeleteNotes();
+        myNotesScreen.clickOnDeleteButton();
     }
-
-
 
     @Test
     public void sendMessenge(){
         utils.scrollToAnElementByText("Zahariev Aleksandar");
         homeScreen.clickOnItems("Zahariev Aleksandar");
-        contactScreen.sendKays("ja ovoa otvoriv za da kucam ne gi zimaj za ozbilno porakite na viber ako treba ke te trazam na dr mesto :D");
+        contactScreen.sendKays("Daj nekoja ideja so test da napravam na Viber :D");
         //contactScreen.clickOnSendButton();
     }
 
@@ -40,18 +50,13 @@ public class TestExample extends BaseClass{
         //saveNewContact.clickOnSaveButton();
         assert profileContactScreen.getTitle().equals("Dajana Georgievska");
     }
+
     @Test
     public void typeNumber(){
         homeScreen.clickOnCallsButton();
         callsScreen.clickOnKeyboardNumbersIcon();
-//        keyboardScreen.clickOnEightButton();
-//        keyboardScreen.clickOnEightButton();
-//        keyboardScreen.clickOnFourButton();
-//        keyboardScreen.clickOnSixButton();
-//        keyboardScreen.clickOnGreenButton();
-        assert keyboardScreen.getNineWords().equals("WXYZ");
+        keyboardScreen.typeNumber("0038975311450");
     }
-
 
     @Test
     public void editProfil() throws Exception {
@@ -67,6 +72,7 @@ public class TestExample extends BaseClass{
         editProfilScreen.renameMail("andrej.zahariev@yahoo.com");
         editProfilScreen.clickOnVerificationButton();*/
     }
+
     @Test
     public void openSettings(){
         homeScreen.clickOnMoreButton();
@@ -114,6 +120,7 @@ public class TestExample extends BaseClass{
         Thread.sleep(2000);
         utils.clickBackButton();
     }
+
     @Test
     public void changeThemeToBlack() throws Exception {
         homeScreen.clickOnMoreButton();
@@ -154,6 +161,7 @@ public class TestExample extends BaseClass{
 
         utils.clickBackButton();
     }
+
     @Test
     public void CheckStatus(){
         utils.scrollToAnElementByText("Zahariev Aleksandar");
@@ -171,15 +179,15 @@ public class TestExample extends BaseClass{
         homeScreen.clickOnCallsButton();
         callsScreen.clickOnAddContactIcon();
         addContactScreen.checkLabelName("Add contact");
-        addContactScreen.AddNumbers("0038978708308");
+        addContactScreen.AddNumbers("00359889095639");
         addContactScreen.clickOnContinueButton();
         profileContactScreen.clickOnEditContact();
         editContactScreen.checkTitleName("Edit contact");
-        /*editContactScreen.changeName("Zahariev Andrej Sluzben");
+        editContactScreen.changeName("Dajana Georgievska");
         editContactScreen.clickOnOrganisation();
-        editContactScreen.enterCompanyName("Totality Skopje");
-        editContactScreen.enterTitleName("QA");
-        editContactScreen.changeMobileType("Work");
+        editContactScreen.enterCompanyName("Splentdent");
+        editContactScreen.enterTitleName("DDM");
+        /*editContactScreen.changeMobileType("Work");
         editContactScreen.changeMobilePhone("075311450");
         editContactScreen.changeEmailType("Other");
         editContactScreen.enterMail("aleksandar.zahariev08@gmail.com");

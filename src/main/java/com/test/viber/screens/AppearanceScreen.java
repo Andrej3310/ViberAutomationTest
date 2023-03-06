@@ -34,5 +34,4 @@ public class AppearanceScreen extends BaseClass {
     }
 
     //testing
-
 }

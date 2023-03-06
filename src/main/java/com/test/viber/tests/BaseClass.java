@@ -11,27 +11,30 @@ import java.util.concurrent.TimeUnit;
 
 public class BaseClass {
 
-     AppiumDriver appiumDriver;
-     HomeScreen homeScreen;
-     HomeSearchScreen homeSearchScreen;
-     SearchResultScreen searchResultScreen;
-     OpenUserScreen openUserScreen;
-     CallsScreen callsScreen;
-     AddContactScreen addContactScreen;
-     MoreScreen moreScreen;
-     Utils utils;
-     NewMessengeScreen newMessengeScreen;
-     ContactScreen contactScreen;
-     SaveNewContact saveNewContact;
-     ProfileContactScreen profileContactScreen;
-     KeyboardScreen keyboardScreen;
-     EditProfilScreen editProfilScreen;
-     SettingsScreen settingsScreen;
-     MyNotesScreen myNotesScreen;
-     AppearanceScreen appearanceScreen;
-     InviteFriendsScreen inviteFriendsScreen;
-     UserChatScreen userChatScreen;
-     EditContactScreen editContactScreen;
+    AppiumDriver appiumDriver;
+    HomeScreen homeScreen;
+    HomeSearchScreen homeSearchScreen;
+    SearchResultScreen searchResultScreen;
+    OpenUserScreen openUserScreen;
+    CallsScreen callsScreen;
+    AddContactScreen addContactScreen;
+    MoreScreen moreScreen;
+    Utils utils;
+    NewMessengeScreen newMessengeScreen;
+    ContactScreen contactScreen;
+    SaveNewContact saveNewContact;
+    ProfileContactScreen profileContactScreen;
+    KeyboardScreen keyboardScreen;
+    EditProfilScreen editProfilScreen;
+    SettingsScreen settingsScreen;
+    MyNotesScreen myNotesScreen;
+    AppearanceScreen appearanceScreen;
+    InviteFriendsScreen inviteFriendsScreen;
+    UserChatScreen userChatScreen;
+    EditContactScreen editContactScreen;
+    NotificationsScreen notificationsScreen;
+    GeneralScreen generalScreen;
+    ActiveCallScreen activeCallScreen;
 
 
     @BeforeClass
@@ -71,5 +74,8 @@ public class BaseClass {
         inviteFriendsScreen = new InviteFriendsScreen(appiumDriver);
         userChatScreen = new UserChatScreen(appiumDriver);
         editContactScreen = new EditContactScreen(appiumDriver);
+        notificationsScreen = new NotificationsScreen(appiumDriver);
+        generalScreen = new GeneralScreen(appiumDriver);
+        activeCallScreen = new ActiveCallScreen(appiumDriver);
     }
 }

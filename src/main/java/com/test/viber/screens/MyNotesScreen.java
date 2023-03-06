@@ -15,12 +15,14 @@ public class MyNotesScreen extends BaseClass {
     String searchButtonId = "com.viber.voip:id/menu_search_messages";
     String settingsButtonXpath = "(//android.widget.ImageView[@content-desc=\"More options\"])[1]";
     String stickerAssId = "Select a sticker to send";
-    String removeButtonXpath = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.widget.RelativeLayout/android.view.ViewGroup/android.widget.RelativeLayout/android.widget.RelativeLayout/android.view.ViewGroup/androidx.recyclerview.widget.RecyclerView/android.view.ViewGroup/android.widget.FrameLayout/android.view.View";
+    String removeFirstMessageXpath = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.widget.RelativeLayout/android.view.ViewGroup/android.widget.FrameLayout/android.widget.RelativeLayout/android.widget.RelativeLayout/android.view.ViewGroup/androidx.recyclerview.widget.RecyclerView/android.view.ViewGroup[1]/android.widget.FrameLayout/android.view.View";
     String deleteAllNotesXpath = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.widget.RelativeLayout/android.view.ViewGroup[2]/android.view.ViewGroup/androidx.recyclerview.widget.RecyclerView/android.widget.TextView";
     String cancelButtonId = "android:id/button2";
     String deleteButtonId = "android:id/button1";
     String titleXpath = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.view.ViewGroup/android.widget.TextView";
     String galleryId = "Choose media from gallery";
+    String lastPhotoXpath = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.widget.RelativeLayout/android.view.ViewGroup/android.widget.FrameLayout/android.widget.RelativeLayout/android.widget.FrameLayout[1]/android.view.ViewGroup/androidx.recyclerview.widget.RecyclerView/android.view.ViewGroup[1]/android.widget.ImageView";
+
 
 
 
@@ -44,7 +46,7 @@ public class MyNotesScreen extends BaseClass {
         return appiumDriver.findElementByAccessibilityId(stickerAssId);
     }
     WebElement getRemoveButtonElement(){
-        return appiumDriver.findElement(By.xpath(removeButtonXpath));
+        return appiumDriver.findElement(By.xpath(removeFirstMessageXpath));
     }
     WebElement getDeleteNotesElement(){
         return appiumDriver.findElement(By.xpath(deleteAllNotesXpath));
@@ -60,6 +62,9 @@ public class MyNotesScreen extends BaseClass {
     }
     WebElement getGalleryElement(){
         return appiumDriver.findElementByAccessibilityId(galleryId);
+    }
+    WebElement getLastPhotoElement(){
+        return appiumDriver.findElement(By.xpath(lastPhotoXpath));
     }
 
     public void clickOnTypeMessange(){
@@ -95,6 +100,9 @@ public class MyNotesScreen extends BaseClass {
     }
     public void clickOnGallery(){
         getGalleryElement().click();
+    }
+    public void selectLastPhoto(){
+        getLastPhotoElement().click();
     }
 }
 

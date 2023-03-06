@@ -32,6 +32,4 @@ public class AppearanceScreen extends BaseClass {
     public void clickOnBlackButton(){
         editScreenModeToBlack().click();
     }
-
-    //testing
 }

@@ -17,6 +17,8 @@ public class UserChatScreen extends BaseClass {
     String sendButtonId = "com.viber.voip:id/btn_send";
     String textFieldId = "com.viber.voip:id/send_text";
     String statusXpath = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.view.ViewGroup/android.widget.TextView[2]";
+    String callButtonId = "com.viber.voip:id/menu_viber_call";
+    String videoButtonId = "com.viber.voip:id/menu_video_call";
 
 
     public UserChatScreen(AppiumDriver appiumDriver){
@@ -50,6 +52,13 @@ public class UserChatScreen extends BaseClass {
     WebElement getStatusElement(){
         return appiumDriver.findElement(By.xpath(statusXpath));
     }
+    WebElement getCallElement(){
+        return appiumDriver.findElement(By.id(callButtonId));
+    }
+    WebElement getVideoELement(){
+        return appiumDriver.findElement(By.id(videoButtonId));
+    }
+
 
     public void clickOnGalleryButton(){
         getGalleryElement().click();
@@ -68,6 +77,12 @@ public class UserChatScreen extends BaseClass {
     }
     public String checkStatus(){
         return getStatusElement().getText();
+    }
+    public void call(){
+        getCallElement().click();
+    }
+    public void videoCall(){
+        getVideoELement().click();
     }
 
 

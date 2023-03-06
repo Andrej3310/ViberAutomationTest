@@ -18,8 +18,34 @@ public class TestExample extends BaseClass{
     public void addMessangeInNotes(){
         homeScreen.clickOnItems("My Notes");
         myNotesScreen.checkPageName("My Notes");
-        myNotesScreen.typeMessange("automation messange");
+        myNotesScreen.typeMessange("automation message");
         myNotesScreen.typeMessange("Inter");
+    }
+
+    @Test
+    public void openNotes(){
+        homeScreen.clickOnMoreButton();
+        moreScreen.clickOnMyNotesButton();
+        myNotesScreen.clickOnTypeMessange();
+        myNotesScreen.typeMessange("poraka 1");
+        myNotesScreen.clickOnSendButton();
+        utils.clickBackButton();
+    }
+
+    @Test
+    public void addPhotoInNotes(){
+        homeScreen.clickOnItems("My Notes");
+        myNotesScreen.clickOnGallery();
+        myNotesScreen.selectLastPhoto();
+        myNotesScreen.clickOnSendButton();
+    }
+
+    @Test
+    public void removeFirstMessangeInMyNotes() throws Exception {
+        utils.scrollToAnElementByText("My Notes");
+        homeScreen.clickOnItems("My Notes");
+        myNotesScreen.clickOnRemoveMessange();
+        utils.clickBackButton();
     }
 
     @Test
@@ -36,8 +62,30 @@ public class TestExample extends BaseClass{
     public void sendMessenge(){
         utils.scrollToAnElementByText("Zahariev Aleksandar");
         homeScreen.clickOnItems("Zahariev Aleksandar");
-        contactScreen.sendKays("Daj nekoja ideja so test da napravam na Viber :D");
+        contactScreen.sendKays("Test sending a message");
         //contactScreen.clickOnSendButton();
+    }
+
+    @Test
+    public void callAnyContact() throws InterruptedException {
+        utils.scrollToAnElementByText("Andrej Zahariev");
+        homeScreen.clickOnItems("Andrej Zahariev");
+        userChatScreen.call();
+        Thread.sleep(5000);
+        activeCallScreen.callSpeaker("Off");
+        Thread.sleep(5000);
+        activeCallScreen.endCall();
+    }
+
+    @Test
+    public void videoCallAnyContact() throws InterruptedException {
+        utils.scrollToAnElementByText("Andrej Zahariev");
+        homeScreen.clickOnItems("Andrej Zahariev");
+        userChatScreen.videoCall();
+        Thread.sleep(5000);
+        activeCallScreen.videoSpeaker("Off");
+        Thread.sleep(5000);
+        activeCallScreen.endCall();
     }
 
     @Test
@@ -63,11 +111,12 @@ public class TestExample extends BaseClass{
         homeScreen.clickOnMoreButton();
         moreScreen.clickOnEdit();
         editProfilScreen.clickOnDate();
-        editProfilScreen.izberiData("30", "Jun", "1996");
-/*
+        editProfilScreen.izberiDen("15");
+        editProfilScreen.izberiMesec("Jan");
+        editProfilScreen.izberiGodina("1993");
+        editProfilScreen.clickOnOk();
 
-
-        //assert editProfilScreen.getTextFromName().equals("Andrej");
+        /*assert editProfilScreen.getTextFromName().equals("Andrej");
         editProfilScreen.clearEmailField();
         editProfilScreen.renameMail("andrej.zahariev@yahoo.com");
         editProfilScreen.clickOnVerificationButton();*/
@@ -77,22 +126,34 @@ public class TestExample extends BaseClass{
     public void openSettings(){
         homeScreen.clickOnMoreButton();
         moreScreen.clickOnSettings();
-        settingsScreen.getListElement().size();
-        for(int i=0; i<settingsScreen.getListElement().size(); i++){
-            System.out.println(i+1+". " + settingsScreen.getListElement().get(i).getText());
-        }
-        System.out.println(settingsScreen.getListElement().size());
+        settingsScreen.printListOfItems();
     }
 
     @Test
-    public void openNotes(){
+    public void setNotification() throws InterruptedException {
         homeScreen.clickOnMoreButton();
-        moreScreen.clickOnMyNotesButton();
-        myNotesScreen.clickOnTypeMessange();
-        myNotesScreen.typeMessange("poraka 1");
-        myNotesScreen.clickOnSendButton();
-        utils.clickBackButton();
+        moreScreen.clickOnSettings();
+        settingsScreen.clickOn("Notifications");
+        notificationsScreen.showMessagePreview(true);
+        notificationsScreen.contactJoinedViber(true);
+        notificationsScreen.getBirthdayNotifications(true);
+        notificationsScreen.showExploreNotifications(false);
+        notificationsScreen.showBirthdaysReminders(false);
+        utils.scrollToAnElementByText("Vibrate when ringing");
+        notificationsScreen.vibrateWhenRinging(true);
     }
+
+    @Test
+    public void changeLanguage() {
+        homeScreen.clickOnMoreButton();
+        moreScreen.clickOnSettings();
+        settingsScreen.clickOn("General");
+        generalScreen.clickOnLanguage();
+        utils.scrollToAnElementByText("Български");
+        generalScreen.selectNewLanguage("Български");
+        generalScreen.clickOnSaveButton();
+    }
+
 
     @Test
     public void clearMessangeInPoliceGroup() throws Exception {
@@ -103,19 +164,10 @@ public class TestExample extends BaseClass{
     }
 
     @Test
-    public void removeMessangeInMyNotes() throws Exception {
-        utils.scrollToAnElementByText("My Notes");
-        homeScreen.clickOnItems("My Notes");
-        myNotesScreen.clickOnRemoveMessange();
-        Thread.sleep(2000);
-        utils.clickBackButton();
-    }
-
-    @Test
     public void changeThemeOnDarkBlue() throws Exception {
         homeScreen.clickOnMoreButton();
         moreScreen.clickOnSettings();
-        settingsScreen.clickOnAppearanceButton();
+        settingsScreen.clickOn("Appearance");
         appearanceScreen.clickOnDarkBlueButton();
         Thread.sleep(2000);
         utils.clickBackButton();
@@ -125,7 +177,7 @@ public class TestExample extends BaseClass{
     public void changeThemeToBlack() throws Exception {
         homeScreen.clickOnMoreButton();
         moreScreen.clickOnSettings();
-        settingsScreen.clickOnAppearanceButton();
+        settingsScreen.clickOn("Appearance");
         appearanceScreen.clickOnBlackButton();
         Thread.sleep(2000);
         utils.clickBackButton();

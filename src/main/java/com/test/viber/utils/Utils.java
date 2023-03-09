@@ -59,8 +59,8 @@ public class Utils extends BaseClass {
         System.out.println("Scrolling is done");
     }
 
-    public WebElement scrollToAnElementByText(String text) {
-        return appiumDriver.findElement(MobileBy.AndroidUIAutomator("new UiScrollable(new UiSelector())" + ".scrollIntoView(new UiSelector().text(\"" + text + "\"));"));
+    public void scrollToAnElementByText(String text) {
+        appiumDriver.findElement(MobileBy.AndroidUIAutomator("new UiScrollable(new UiSelector())" + ".scrollIntoView(new UiSelector().text(\"" + text + "\"));"));
     }
     public WebElement findElement(String text) {
         return appiumDriver.findElement(MobileBy.AndroidUIAutomator("new UiSelector().textContains(\"" + text + "\")"));
@@ -86,6 +86,14 @@ public class Utils extends BaseClass {
     }
     public void clickOnChatInfo(){
         getChatInfoElement().click();
+    }
+
+    public void scrool(){/*
+        int flag = 0;
+        if(scrollToAnElementByText().isDisplayed()){
+            flag = 1;
+            scrollToAnElementByText()
+        }*/
     }
 
 }

@@ -157,6 +157,7 @@ public class TestExample extends BaseClass{
 
     @Test
     public void clearMessangeInPoliceGroup() throws Exception {
+        utils.scrollToAnElementByText("Стоп Полиција-Stop Police");
         homeScreen.clickOnItems("Стоп Полиција-Stop Police");
         contactScreen.clickOnJumpButtom();
         Thread.sleep(5000);
@@ -192,7 +193,7 @@ public class TestExample extends BaseClass{
     }
 
     @Test
-    public void SendLastPhotoFromPhoneToDajana() throws InterruptedException {
+    public void sendLastPhotoFromPhoneToDajana() throws InterruptedException {
         //homeScreen.printText();
         //homeScreen.clickOnItems("Andrej \uD83D\uDC95");
         homeScreen.clickOnItems("Dajana Georgievska");
@@ -204,25 +205,20 @@ public class TestExample extends BaseClass{
     }
 
     @Test
-    public void SendMessangeTo() throws Exception{
-        homeScreen.clickOnItems("Andrej \uD83D\uDC95");
+    public void sendMessangeTo() throws Exception{
+        homeScreen.clickOnItems("Andrej Zahariev");
         userChatScreen.clickOnTextField();
         userChatScreen.sendText("Odi da jades");
         Thread.sleep(2000);
         userChatScreen.clickOnSendButton();
-
         utils.clickBackButton();
     }
 
     @Test
-    public void CheckStatus(){
-        utils.scrollToAnElementByText("Zahariev Aleksandar");
-        homeScreen.clickOnItems("Zahariev Aleksandar");
-        if (userChatScreen.checkStatus().equals("Online")){
-            System.out.println("Korisnikot e Online");
-        }
-        else
-            System.out.println("Korisnikot ne e online");
+    public void checkStatus(){
+        utils.scrollToAnElementByText("Andrej Zahariev");
+        homeScreen.clickOnItems("Andrej Zahariev");
+        userChatScreen.checkStatus();
         utils.clickBackButton();
     }
 

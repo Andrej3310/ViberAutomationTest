@@ -88,12 +88,4 @@ public class Utils extends BaseClass {
         getChatInfoElement().click();
     }
 
-    public void scrool(){/*
-        int flag = 0;
-        if(scrollToAnElementByText().isDisplayed()){
-            flag = 1;
-            scrollToAnElementByText()
-        }*/
-    }
-
 }

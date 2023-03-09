@@ -242,4 +242,14 @@ public class TestExample extends BaseClass{
         editContactScreen.addAnotherField("IM");
         editContactScreen.enterAdress("Metodija Shatorov Sharlo 25");*/
     }
+
+    @Test
+    public void downloadFreeSticker() throws InterruptedException {
+        homeScreen.clickOnMoreButton();
+        moreScreen.clickOnItem("Sticker Market");
+        Thread.sleep(2000);
+        //stickerMarketScreen.clickOnFreeSticker();
+        utils.scrollToAnElementByText("Dating Life");
+        stickerMarketScreen.clickOnFoundSticker("Dating Life");
+    }
 }

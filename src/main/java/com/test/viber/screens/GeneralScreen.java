@@ -35,15 +35,11 @@ public class GeneralScreen extends BaseClass {
         getSaveElement().click();
     }
     public void selectNewLanguage(String language){
-        //System.out.println(getTitleElement().size());
         for (int i=1;i<getTitleElement().size();i++){
             if (getTitleElement().get(i).getText().equals(language)){
                 getTitleElement().get(i).click();
             }
         }
     }
-
-
-
 
 }

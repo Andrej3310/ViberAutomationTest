@@ -35,6 +35,7 @@ public class BaseClass {
     NotificationsScreen notificationsScreen;
     GeneralScreen generalScreen;
     ActiveCallScreen activeCallScreen;
+    StickerMarketScreen stickerMarketScreen;
 
 
     @BeforeClass
@@ -77,5 +78,6 @@ public class BaseClass {
         notificationsScreen = new NotificationsScreen(appiumDriver);
         generalScreen = new GeneralScreen(appiumDriver);
         activeCallScreen = new ActiveCallScreen(appiumDriver);
+        stickerMarketScreen = new StickerMarketScreen(appiumDriver);
     }
 }

@@ -75,8 +75,12 @@ public class UserChatScreen extends BaseClass {
     public void sendText(String text){
         getTextFieldElement().sendKeys(text);
     }
-    public String checkStatus(){
-        return getStatusElement().getText();
+    public void checkStatus(){
+        if (getStatusElement().getText().equals("Online")){
+            System.out.println("Korisnikot e Online");
+        }
+        else
+            System.out.println("Korisnikot ne e online");
     }
     public void call(){
         getCallElement().click();
@@ -84,7 +88,6 @@ public class UserChatScreen extends BaseClass {
     public void videoCall(){
         getVideoELement().click();
     }
-
 
 
 

@@ -48,16 +48,16 @@ public class HomeScreen extends BaseClass {
     List<WebElement> getListElement(){
         return (List<WebElement>) appiumDriver.findElements(MobileBy.id(listOfItemsId));
     }
-     WebElement getAdSettingsElement(){
+    WebElement getAdSettingsElement(){
         return appiumDriver.findElement(By.id(adSettingsId));
      }
-     WebElement getExploreButtonElement(){
+    WebElement getExploreButtonElement(){
         return appiumDriver.findElement(By.id(buttonExploreId));
      }
-     WebElement getTextFromUser(){
+    WebElement getTextFromUser(){
         return appiumDriver.findElement(By.xpath(getTextFromThisUSer));
      }
-     WebElement getCameraElement(){
+    WebElement getCameraElement(){
         return appiumDriver.findElement(By.id(cameraId));
      }
 
@@ -95,7 +95,6 @@ public class HomeScreen extends BaseClass {
     public List<WebElement> getListOfItems(){
         return getListElement();
     }
-
     public void clickOnItems(String item){
         int flag=0;
         for(int i=0;i<getListOfItems().size();i++){

@@ -32,7 +32,7 @@ public class MoreScreen extends BaseClass {
         return appiumDriver.findElement(By.id(qrId));
     }
     List<WebElement> getOptionElement(){
-        return (List<WebElement>) appiumDriver.findElements(MobileBy.id(listOptionId));
+        return (List<WebElement>) appiumDriver.findElements(By.id(listOptionId));
     }
     WebElement getSettingsElement(){
         return appiumDriver.findElement(By.xpath(settingsXpath));
@@ -51,9 +51,6 @@ public class MoreScreen extends BaseClass {
     public void clickOnQrButton(){
         qrButtonElement().click();
     }
-    public List<WebElement> listOfOption(){
-        return getOptionElement();
-    }
     public void clickOnSettings(){
         getSettingsElement().click();
     }
@@ -62,5 +59,14 @@ public class MoreScreen extends BaseClass {
     }
     public void clickOnInviteFriends(){
         getInviteFriendsElement().click();
+    }
+    public void clickOnItem(String item){
+        System.out.println(getOptionElement().size());
+        for (int i=0;i<getOptionElement().size();i++){
+            System.out.println(getOptionElement().get(i).getText());
+            if (getOptionElement().get(i).getText().equals(item)){
+                getOptionElement().get(i).click();
+            }
+        }
     }
 }

@@ -117,6 +117,7 @@ public class TestExample extends BaseClass{
         editProfilScreen.clickOnEmail();
         editProfilScreen.clearEmailField();
         editProfilScreen.renameMail("andrej.zahariev@yahoo.com");
+
         utils.clickBackButton();
     }
 

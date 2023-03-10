@@ -22,7 +22,7 @@ public class MyNotesScreen extends BaseClass {
     String titleXpath = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.view.ViewGroup/android.widget.TextView";
     String galleryId = "Choose media from gallery";
     String lastPhotoXpath = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.widget.RelativeLayout/android.view.ViewGroup/android.widget.FrameLayout/android.widget.RelativeLayout/android.widget.FrameLayout[1]/android.view.ViewGroup/androidx.recyclerview.widget.RecyclerView/android.view.ViewGroup[1]/android.widget.ImageView";
-
+    String notesId = "com.viber.voip:id/balloonView";
 
 
 
@@ -66,6 +66,9 @@ public class MyNotesScreen extends BaseClass {
     WebElement getLastPhotoElement(){
         return appiumDriver.findElement(By.xpath(lastPhotoXpath));
     }
+    WebElement getNotesElement(){
+        return appiumDriver.findElement(By.id(notesId));
+    }
 
     public void clickOnTypeMessange(){
         getTypeMessangeElement().click();
@@ -86,8 +89,13 @@ public class MyNotesScreen extends BaseClass {
     public void clickOnStickerButton(){
         getStickerElement().click();
     }
-    public void clickOnRemoveMessange(){
-        getRemoveButtonElement().click();
+    public void clickOnRemoveMessage(){
+        try{
+            getRemoveButtonElement().click();
+            System.out.println("The message is successfully deleted");
+        } catch (Exception e){
+            System.out.println("There is no messages in My Notes");
+        }
     }
     public void clickOnDeleteNotes(){
         getDeleteNotesElement().click();

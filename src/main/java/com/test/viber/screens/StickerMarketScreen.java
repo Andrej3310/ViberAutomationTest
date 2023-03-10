@@ -14,7 +14,7 @@ public class StickerMarketScreen extends BaseClass {
     String newXpath = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout[2]/android.widget.RelativeLayout/android.widget.LinearLayout/android.webkit.WebView/android.webkit.WebView/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[2]/android.view.View/android.widget.TextView[3]";
     String collectionsXpath = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout[2]/android.widget.RelativeLayout/android.widget.LinearLayout/android.webkit.WebView/android.webkit.WebView/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[2]/android.view.View/android.widget.TextView[4]";
     String listOfStickerXpath = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout[2]/android.widget.RelativeLayout/android.widget.LinearLayout/android.webkit.WebView/android.webkit.WebView/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[3]/android.view.View[2]";
-    String firstStickerXpath = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout[2]/android.widget.RelativeLayout/android.widget.LinearLayout/android.webkit.WebView/android.webkit.WebView/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[3]/android.view.View[2]/android.view.View[1]";
+    String downloadXpath = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout[2]/android.widget.RelativeLayout/android.widget.LinearLayout/android.webkit.WebView/android.webkit.WebView/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[3]/android.view.View[1]/android.widget.Image";
 
 
 
@@ -25,37 +25,25 @@ public class StickerMarketScreen extends BaseClass {
     WebElement getFreeElement(){
         return appiumDriver.findElement(By.xpath(freeXpath));
     }
-    WebElement getStickerElement(){
-        return appiumDriver.findElement(By.xpath(firstStickerXpath));
+    WebElement getDownloadElement(){
+        return appiumDriver.findElement(By.xpath(downloadXpath));
     }
-
-    List<WebElement> getListElement(){
-        return (List<WebElement>) appiumDriver.findElements(By.xpath(listOfStickerXpath));
-    }
-
 
     public void clickOnFreeSticker(){
         getFreeElement().click();
     }
-    public void text(){
-        System.out.println(getStickerElement().getText());
-    }
-    public void clickOnFoundSticker(String sticker){
-        for (int i=3;i<8;i++){
-            System.out.println("Dali ulava u foro");
-            String path = appiumDriver.findElement(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout[2]/android.widget.RelativeLayout/android.widget.LinearLayout/android.webkit.WebView/android.webkit.WebView/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[3]/android.view.View[2]/android.view.View[" + i + "]")).getText();
-            System.out.println(path);
+    /*public void findSticker(String sticker){
+        for (int i=1;i<9;i++){
+            String path = appiumDriver.findElement(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout[2]/android.widget.RelativeLayout/android.widget.LinearLayout/android.webkit.WebView/android.webkit.WebView/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[3]/android.view.View/android.view.View[" + i + "]/android.view.View/android.widget.TextView[1]")).getText();
             if (path.equals(sticker)){
-                System.out.println("Dali ulava u ifo");
-                appiumDriver.findElement(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout[2]/android.widget.RelativeLayout/android.widget.LinearLayout/android.webkit.WebView/android.webkit.WebView/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[3]/android.view.View[2]/android.view.View[" + i + "]")).click();
-                break;
+                appiumDriver.findElement(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout[2]/android.widget.RelativeLayout/android.widget.LinearLayout/android.webkit.WebView/android.webkit.WebView/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[3]/android.view.View/android.view.View[" + i + "]/android.view.View/android.widget.TextView[1]")).click();
             }
         }
+    }*/
+    public void downloadSticker(){
+        getDownloadElement().click();
+        System.out.println("Stickers are successfully downloaded");
     }
-
-
-
-
 
 
 

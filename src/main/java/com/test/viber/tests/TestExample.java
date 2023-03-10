@@ -15,8 +15,8 @@ public class TestExample extends BaseClass{
     }
 
     @Test
-    public void addMessangeInNotes(){
-        homeScreen.clickOnItems("My Notes");
+    public void addMessageInNotes(){
+        utils.scrollToAnElementByText("My Notes");
         myNotesScreen.checkPageName("My Notes");
         myNotesScreen.typeMessange("automation message");
         myNotesScreen.typeMessange("Inter");
@@ -41,10 +41,10 @@ public class TestExample extends BaseClass{
     }
 
     @Test
-    public void removeFirstMessangeInMyNotes() throws Exception {
+    public void removeFirstMessageInMyNotes() throws InterruptedException {
         utils.scrollToAnElementByText("My Notes");
-        homeScreen.clickOnItems("My Notes");
-        myNotesScreen.clickOnRemoveMessange();
+        myNotesScreen.clickOnRemoveMessage();
+        Thread.sleep(2000);
         utils.clickBackButton();
     }
 
@@ -59,9 +59,8 @@ public class TestExample extends BaseClass{
     }
 
     @Test
-    public void sendMessenge(){
+    public void sendMessage(){
         utils.scrollToAnElementByText("Zahariev Aleksandar");
-        homeScreen.clickOnItems("Zahariev Aleksandar");
         contactScreen.sendKays("Test sending a message");
         //contactScreen.clickOnSendButton();
     }
@@ -69,7 +68,6 @@ public class TestExample extends BaseClass{
     @Test
     public void callAnyContact() throws InterruptedException {
         utils.scrollToAnElementByText("Andrej Zahariev");
-        homeScreen.clickOnItems("Andrej Zahariev");
         userChatScreen.call();
         Thread.sleep(5000);
         activeCallScreen.callSpeaker("Off");
@@ -80,7 +78,6 @@ public class TestExample extends BaseClass{
     @Test
     public void videoCallAnyContact() throws InterruptedException {
         utils.scrollToAnElementByText("Andrej Zahariev");
-        homeScreen.clickOnItems("Andrej Zahariev");
         userChatScreen.videoCall();
         Thread.sleep(5000);
         activeCallScreen.videoSpeaker("Off");
@@ -111,15 +108,16 @@ public class TestExample extends BaseClass{
         homeScreen.clickOnMoreButton();
         moreScreen.clickOnEdit();
         editProfilScreen.clickOnDate();
-        editProfilScreen.izberiDen("15");
-        editProfilScreen.izberiMesec("Jan");
-        editProfilScreen.izberiGodina("1993");
+        editProfilScreen.izberiDen("30");
+        editProfilScreen.izberiMesec("Jun");
+        editProfilScreen.izberiGodina("1996");
         editProfilScreen.clickOnOk();
-
-        /*assert editProfilScreen.getTextFromName().equals("Andrej");
+        //editProfilScreen.checkName("Andrej");
+        Thread.sleep(2000);
+        editProfilScreen.clickOnEmail();
         editProfilScreen.clearEmailField();
         editProfilScreen.renameMail("andrej.zahariev@yahoo.com");
-        editProfilScreen.clickOnVerificationButton();*/
+        utils.clickBackButton();
     }
 
     @Test
@@ -156,9 +154,8 @@ public class TestExample extends BaseClass{
 
 
     @Test
-    public void clearMessangeInPoliceGroup() throws Exception {
+    public void clearMessageInPoliceGroup() throws Exception {
         utils.scrollToAnElementByText("Стоп Полиција-Stop Police");
-        homeScreen.clickOnItems("Стоп Полиција-Stop Police");
         contactScreen.clickOnJumpButtom();
         Thread.sleep(5000);
         utils.clickBackButton();
@@ -188,7 +185,6 @@ public class TestExample extends BaseClass{
     public void openInviteFriends(){
         homeScreen.clickOnMoreButton();
         utils.scrollToAnElementByText("Invite friends");
-        moreScreen.clickOnInviteFriends();
         utils.clickBackButton();
     }
 
@@ -217,7 +213,6 @@ public class TestExample extends BaseClass{
     @Test
     public void checkStatus(){
         utils.scrollToAnElementByText("Andrej Zahariev");
-        homeScreen.clickOnItems("Andrej Zahariev");
         userChatScreen.checkStatus();
         utils.clickBackButton();
     }
@@ -244,12 +239,12 @@ public class TestExample extends BaseClass{
     }
 
     @Test
-    public void downloadFreeSticker() throws InterruptedException {
+    public void downloadFreeSticker(){
+        String sticker = "The Love Guru";
         homeScreen.clickOnMoreButton();
-        moreScreen.clickOnItem("Sticker Market");
-        Thread.sleep(2000);
-        //stickerMarketScreen.clickOnFreeSticker();
-        utils.scrollToAnElementByText("Dating Life");
-        stickerMarketScreen.clickOnFoundSticker("Dating Life");
+        moreScreen.clickOnStickerMarket();
+        stickerMarketScreen.clickOnFreeSticker();
+        utils.scrollToAnElementByText(sticker);
+        stickerMarketScreen.downloadSticker();
     }
 }

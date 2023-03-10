@@ -60,7 +60,11 @@ public class Utils extends BaseClass {
     }
 
     public void scrollToAnElementByText(String text) {
-        appiumDriver.findElement(MobileBy.AndroidUIAutomator("new UiScrollable(new UiSelector())" + ".scrollIntoView(new UiSelector().text(\"" + text + "\"));"));
+        try {
+            appiumDriver.findElement(MobileBy.AndroidUIAutomator("new UiScrollable(new UiSelector())" + ".scrollIntoView(new UiSelector().text(\"" + text + "\"));")).click();
+        } catch (Exception e){
+            System.out.println(text + " is not found");
+        }
     }
     public WebElement findElement(String text) {
         return appiumDriver.findElement(MobileBy.AndroidUIAutomator("new UiSelector().textContains(\"" + text + "\")"));

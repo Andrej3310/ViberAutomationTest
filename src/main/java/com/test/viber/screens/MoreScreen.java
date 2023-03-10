@@ -15,7 +15,7 @@ public class MoreScreen extends BaseClass {
     String listOptionId = "com.viber.voip:id/titleView";
     String settingsXpath = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.view.ViewGroup/androidx.recyclerview.widget.RecyclerView/android.view.ViewGroup[4]";
     String viberOutXpath = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.View/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View[2]";
-    String stickerMarketXpath = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.View/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View[1]";
+    String stickerMarketXpath = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.view.ViewGroup/androidx.recyclerview.widget.RecyclerView/android.view.ViewGroup[1]";
     String myNotesXpath = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.view.ViewGroup/androidx.recyclerview.widget.RecyclerView/android.view.ViewGroup[5]";
     String inviteFriendsXpath = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.view.ViewGroup/androidx.recyclerview.widget.RecyclerView/android.view.ViewGroup[7]";
 
@@ -25,15 +25,16 @@ public class MoreScreen extends BaseClass {
     public MoreScreen(AppiumDriver appiumDriver) {
         this.appiumDriver = appiumDriver;
     }
+    List<WebElement> getOptionElement(){
+        return (List<WebElement>) appiumDriver.findElements(By.id(listOptionId));
+    }
     WebElement editButtonElement(){
         return appiumDriver.findElement(By.id(editSettingsId));
     }
     WebElement qrButtonElement(){
         return appiumDriver.findElement(By.id(qrId));
     }
-    List<WebElement> getOptionElement(){
-        return (List<WebElement>) appiumDriver.findElements(By.id(listOptionId));
-    }
+    WebElement getStickerElement(){return appiumDriver.findElement(By.xpath(stickerMarketXpath));}
     WebElement getSettingsElement(){
         return appiumDriver.findElement(By.xpath(settingsXpath));
     }
@@ -59,6 +60,9 @@ public class MoreScreen extends BaseClass {
     }
     public void clickOnInviteFriends(){
         getInviteFriendsElement().click();
+    }
+    public void clickOnStickerMarket(){
+        getStickerElement().click();
     }
     public void clickOnItem(String item){
         System.out.println(getOptionElement().size());
